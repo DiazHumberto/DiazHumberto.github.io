@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Humberto Díaz — GIS & Environmental Data Scientist</title>
+<title>Humberto Díaz — AI, GIS & Environmental Data Scientist</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
@@ -51,7 +51,7 @@
     text-decoration: none;
     letter-spacing: -0.02em;
   }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links { display: flex; gap: 1.4rem; list-style: none; }
   .nav-links a {
     text-decoration: none;
     color: var(--text-muted);
@@ -73,7 +73,6 @@
     margin: 0 auto;
     gap: 4rem;
   }
-  .hero-text { }
   .hero-eyebrow {
     display: inline-block;
     font-size: 0.78rem;
@@ -103,7 +102,7 @@
     font-size: 1.05rem;
     color: var(--text-muted);
     font-weight: 300;
-    max-width: 460px;
+    max-width: 520px;
     margin-bottom: 2.2rem;
     line-height: 1.75;
   }
@@ -134,7 +133,7 @@
   }
   .btn-secondary:hover { border-color: var(--green); color: var(--green); }
 
-  /* hero visual */
+  /* HERO VISUAL */
   .hero-visual {
     position: relative;
     display: flex;
@@ -183,10 +182,6 @@
     animation: pulse 2s ease-in-out infinite;
   }
   @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: 0; } }
-  .map-dot:nth-child(2) { top: 40%; left: 55%; }
-  .map-dot:nth-child(3) { top: 25%; left: 30%; animation-delay: 0.6s; }
-  .map-dot:nth-child(4) { top: 65%; left: 72%; animation-delay: 1.2s; }
-  .map-dot:nth-child(5) { top: 55%; left: 20%; animation-delay: 0.9s; }
   .card-stat-row { display: flex; gap: 0.75rem; }
   .stat-chip {
     flex: 1;
@@ -227,8 +222,15 @@
     font-size: clamp(2rem, 3.5vw, 2.8rem);
     color: var(--green-dark);
     letter-spacing: -0.02em;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
     line-height: 1.15;
+  }
+  .section-intro {
+    color: var(--text-muted);
+    font-weight: 300;
+    max-width: 760px;
+    margin-bottom: 3rem;
+    font-size: 1rem;
   }
   .divider {
     border: none;
@@ -287,7 +289,14 @@
   .highlight-card h4 { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.2rem; color: var(--green-dark); }
   .highlight-card p { font-size: 0.85rem; color: var(--text-muted); font-weight: 300; line-height: 1.5; }
 
-  /* PORTFOLIO */
+  /* PROJECTS */
+  .project-group-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.65rem;
+    color: var(--green-dark);
+    margin: 3.5rem 0 1.25rem;
+  }
+  .project-group-title:first-of-type { margin-top: 0; }
   .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -319,8 +328,10 @@
       linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px);
     background-size: 20px 20px;
   }
-  .thumb-2 { background: linear-gradient(135deg, #E6F1FB, #B5D4F4); }
-  .thumb-3 { background: linear-gradient(135deg, #EAF3DE, #C0DD97); }
+  .project-thumb span { position: relative; z-index: 2; }
+  .thumb-blue { background: linear-gradient(135deg, #E6F1FB, #B5D4F4); }
+  .thumb-green { background: linear-gradient(135deg, #EAF3DE, #C0DD97); }
+  .thumb-sand { background: linear-gradient(135deg, #F4EEDC, #DCCB9A); }
   .project-body { padding: 1.5rem; }
   .project-tag {
     font-size: 0.72rem;
@@ -332,6 +343,22 @@
   }
   .project-body h3 { font-size: 1.05rem; font-weight: 500; color: var(--green-dark); margin-bottom: 0.5rem; }
   .project-body p { font-size: 0.875rem; color: var(--text-muted); font-weight: 300; line-height: 1.6; margin-bottom: 1rem; }
+  .status-note {
+    display: inline-block;
+    font-size: 0.75rem;
+    color: var(--teal);
+    background: var(--green-light);
+    border: 1px solid var(--accent);
+    border-radius: 100px;
+    padding: 0.18rem 0.65rem;
+    margin-bottom: 0.85rem;
+  }
+  .tech-line {
+    font-size: 0.8rem !important;
+    margin-bottom: 1rem !important;
+    color: var(--teal) !important;
+    font-weight: 400 !important;
+  }
   .project-link {
     font-size: 0.82rem;
     color: var(--green);
@@ -341,8 +368,41 @@
     align-items: center;
     gap: 0.3rem;
     transition: gap 0.15s;
+    margin-right: 0.8rem;
+    margin-bottom: 0.35rem;
   }
   .project-link:hover { gap: 0.5rem; }
+
+  /* GIS CAPABILITIES */
+  .capability-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+  }
+  .capability-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 1.4rem;
+  }
+  .capability-card h3 {
+    color: var(--green-dark);
+    font-size: 1rem;
+    margin-bottom: 0.7rem;
+    font-weight: 500;
+  }
+  .capability-card ul {
+    list-style: none;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    font-weight: 300;
+    line-height: 1.75;
+  }
+  .capability-card li::before {
+    content: "•";
+    color: var(--green);
+    margin-right: 0.45rem;
+  }
 
   /* EXPERIENCE */
   .timeline { display: flex; flex-direction: column; gap: 0; }
@@ -424,7 +484,8 @@
   /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
-    .nav-links { gap: 1.2rem; }
+    .nav-links { gap: 0.9rem; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a { font-size: 0.78rem; }
     .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; gap: 2.5rem; }
     .hero-visual { order: -1; }
     section { padding: 3.5rem 1.5rem; }
@@ -440,7 +501,8 @@
   <a href="#home" class="nav-logo">H. Díaz</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#portfolio">Projects</a></li>
+    <li><a href="#gis">GIS</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -450,11 +512,11 @@
 <div id="home" style="max-width:1200px;margin:0 auto;">
   <div class="hero">
     <div class="hero-text">
-      <span class="hero-eyebrow">GIS · Environmental · AI/ML</span>
-      <h1>Mapping the world,<br><em>one dataset</em> at a time.</h1>
-      <p class="hero-sub">Environmental Engineer and geospatial professional with expertise in GIS, remote sensing, and environmental data science — building tools that connect people to the landscapes they depend on.</p>
+      <span class="hero-eyebrow">AI · GIS · Environmental Data Science</span>
+      <h1>Building data tools for<br><em>environmental systems</em>.</h1>
+      <p class="hero-sub">Environmental Engineer and AI & Machine Learning graduate based in Winnipeg, combining GIS, remote sensing, Python, data engineering, and ecological knowledge to analyze real-world environmental and spatial problems.</p>
       <div class="hero-cta">
-        <a href="#portfolio" class="btn-primary">View my work</a>
+        <a href="#portfolio" class="btn-primary">View projects</a>
         <a href="#contact" class="btn-secondary">Get in touch</a>
       </div>
     </div>
@@ -468,9 +530,9 @@
           <div class="map-dot" style="top:55%;left:20%"></div>
         </div>
         <div class="card-stat-row">
-          <div class="stat-chip"><strong>12+</strong><span>ArcGIS Products</span></div>
+          <div class="stat-chip"><strong>7.7M+</strong><span>Records Analyzed</span></div>
           <div class="stat-chip"><strong>25+</strong><span>Field Surveys</span></div>
-          <div class="stat-chip"><strong>4 yrs</strong><span>Consulting</span></div>
+          <div class="stat-chip"><strong>AI/ML</strong><span>Graduate</span></div>
         </div>
       </div>
     </div>
@@ -482,56 +544,58 @@
 <!-- ABOUT -->
 <section id="about">
   <p class="section-label">About me</p>
-  <h2 class="section-title">Engineer, analyst,<br>and field naturalist.</h2>
+  <h2 class="section-title">Environmental engineering, spatial analytics, and applied AI.</h2>
   <div class="about-grid">
     <div class="about-text">
-      <p>I'm Humberto (Don) Díaz — an Environmental Engineer and GIS specialist based in Winnipeg, Manitoba. My work sits at the crossroads of spatial data, ecological science, and machine learning.</p>
-      <p>I hold a Bachelor of Environmental Engineering from Universidad Politécnica Salesiana and a Post-Degree Diploma in AI & Machine Learning from the University of Winnipeg (2026). I'm bilingual in English and Spanish and licensed to work across Canada.</p>
-      <p>From mapping restoration zones in the Galápagos Islands to building geospatial models for Canadian municipalities, I bring a rigorous, curious approach to every project.</p>
+      <p>I'm Humberto Díaz — an Environmental Engineer and AI & Machine Learning graduate based in Winnipeg, Manitoba. My work sits at the crossroads of spatial data, ecological science, environmental systems, and machine learning.</p>
+      <p>I hold a Bachelor of Environmental Engineering from Universidad Politécnica Salesiana and a Post-Degree Diploma in Artificial Intelligence & Machine Learning from the University of Winnipeg. My background includes ecological restoration, GIS analysis, environmental data management, and applied data science projects.</p>
+      <p>My portfolio focuses on practical, real-world problems: wetland monitoring, ecological restoration, sustainable agriculture, wastewater treatment modeling, AI coaching feedback systems, and large-scale data analytics.</p>
       <div class="skills-list">
-        <span class="skill-tag">ArcGIS Pro</span>
-        <span class="skill-tag">QGIS</span>
         <span class="skill-tag">Python</span>
-        <span class="skill-tag">ArcPy</span>
-        <span class="skill-tag">R</span>
-        <span class="skill-tag">PostGIS</span>
-        <span class="skill-tag">Remote Sensing</span>
-        <span class="skill-tag">Google Cloud</span>
+        <span class="skill-tag">Pandas</span>
+        <span class="skill-tag">NumPy</span>
         <span class="skill-tag">scikit-learn</span>
-        <span class="skill-tag">TensorFlow</span>
         <span class="skill-tag">SQL</span>
         <span class="skill-tag">Snowflake</span>
-        <span class="skill-tag">ESRI Field Maps</span>
-        <span class="skill-tag">Survey123</span>
+        <span class="skill-tag">Apache Airflow</span>
+        <span class="skill-tag">Apache Kafka</span>
+        <span class="skill-tag">FastAPI</span>
+        <span class="skill-tag">OpenAI API</span>
+        <span class="skill-tag">ArcGIS Pro</span>
+        <span class="skill-tag">ArcMap</span>
+        <span class="skill-tag">QGIS</span>
+        <span class="skill-tag">Remote Sensing</span>
+        <span class="skill-tag">Raster Analysis</span>
+        <span class="skill-tag">CRISP-DM</span>
       </div>
     </div>
     <div class="about-highlights">
       <div class="highlight-card">
-        <div class="highlight-icon">🌿</div>
+        <div class="highlight-icon">🛰️</div>
         <div>
-          <h4>Galápagos Verde 2050 — CDRS</h4>
-          <p>Produced 12 ArcGIS Pro map products and classified 4,540 seeds across 16 species in support of the islands' restoration program.</p>
-        </div>
-      </div>
-      <div class="highlight-card">
-        <div class="highlight-icon">💧</div>
-        <div>
-          <h4>Ecuador Ministry of Environment</h4>
-          <p>Led water resource planning for 300+ hectares across six Irrigation Water Boards, integrating spatial and regulatory data.</p>
+          <h4>Environmental Remote Sensing</h4>
+          <p>Developing Python-based workflows for wetland vegetation change monitoring using satellite imagery and geospatial analysis.</p>
         </div>
       </div>
       <div class="highlight-card">
         <div class="highlight-icon">🤖</div>
         <div>
-          <h4>AI & Machine Learning Diploma</h4>
-          <p>University of Winnipeg, 2026 — combining geospatial methods with modern ML for environmental data science applications.</p>
+          <h4>Applied AI Product Experience</h4>
+          <p>Contributed to an AI coaching feedback system using FastAPI, structured JSON outputs, trend analysis, and LLM-assisted feedback generation.</p>
         </div>
       </div>
       <div class="highlight-card">
-        <div class="highlight-icon">🛰️</div>
+        <div class="highlight-icon">🌿</div>
         <div>
-          <h4>NASA ARSET Certified</h4>
-          <p>Certified in remote sensing for invasive species detection, extreme weather, and vegetation change analysis.</p>
+          <h4>Ecological Restoration</h4>
+          <p>Supported Galápagos Verde 2050 through field reporting, species propagation documentation, ecological monitoring, and restoration support.</p>
+        </div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon">📊</div>
+        <div>
+          <h4>Large-Scale Data Analysis</h4>
+          <p>Analyzed 7.7M+ records using Python, statistics, visualization, temporal analysis, and spatial hotspot interpretation.</p>
         </div>
       </div>
     </div>
@@ -544,231 +608,198 @@
 <section id="portfolio">
   <p class="section-label">Portfolio</p>
   <h2 class="section-title">Selected projects.</h2>
+  <p class="section-intro">A curated set of environmental, geospatial, AI, and data engineering projects. Some are completed reports; others are active projects that continue to evolve.</p>
+
+  <h3 class="project-group-title">Featured Projects</h3>
   <div class="portfolio-grid">
+
     <div class="project-card">
-
-  <div class="project-thumb">
-    🌾
-  </div>
-
-  <div class="project-body">
-
-    <p class="project-tag">
-      Data Science · Sustainable Agriculture
-    </p>
-
-    <h3>
-      Optimizing Sustainable Farming with AI-Driven Insights
-    </h3>
-
-    <p>
-      End-to-end data science project following the CRISP-DM framework to
-      optimize sustainable farming practices. The project combines agricultural
-      and market datasets, exploratory data analysis, feature engineering, and
-      data preparation to support future predictive modeling for crop-yield
-      optimization and resource-use reduction.
-    </p>
-
-    <p style="font-size:0.8rem; margin-bottom:1rem; color:#0F6E56;">
-      Python • Pandas • NumPy • Matplotlib • Seaborn • CRISP-DM • EDA • Feature Engineering
-    </p>
-
-    <a href="assets/pdfs/optimizing-sustainable-farming-business.pdf"
-       class="project-link"
-       target="_blank">
-       Business case →
-    </a>
-
-    <br>
-
-    <a href="assets/pdfs/optimizing-sustainable-farming-data-understanding.pdf"
-       class="project-link"
-       target="_blank">
-       Data understanding →
-    </a>
-
-    <br>
-
-    <a href="assets/pdfs/optimizing-sustainable-farming-data-preparation.pdf"
-       class="project-link"
-       target="_blank">
-       Data preparation →
-    </a>
-
-  </div>
-
-</div>
-   <div class="project-card">
-
-  <div class="project-thumb">
-    💧
-  </div>
-
-  <div class="project-body">
-
-    <p class="project-tag">
-      Environmental Engineering · Simulation
-    </p>
-
-    <h3>
-      Wastewater Treatment Plant Modeling
-    </h3>
-
-    <p>
-      Simulation and characterization of domestic wastewater
-      treatment processes using ASM1 methodologies,
-      environmental parameter analysis, and process
-      optimization workflows.
-    </p>
-
-    <p style="font-size:0.8rem; margin-bottom:1rem; color:#0F6E56;">
-      WEST • Environmental Modeling • Water Quality • Data Analysis
-    </p>
-
-    <a href="assets/pdfs/wastewater-modeling.pdf"
-       class="project-link"
-       target="_blank">
-
-       View report →
-
-    </a>
-
-  </div>
-  <div class="project-card">
-
-  <div class="project-thumb">
-    🌿
-  </div>
-
-  <div class="project-body">
-
-    <p class="project-tag">
-      Ecological Restoration · Environmental Research
-    </p>
-
-    <h3>
-      Galápagos Verde 2050 Restoration Research
-    </h3>
-
-    <p>
-      Contributed to ecological restoration and conservation
-      activities within the Galápagos Verde 2050 program at the
-      Charles Darwin Foundation, supporting endangered species
-      propagation, ecological monitoring, scientific
-      documentation, and biodiversity restoration initiatives
-      across the Galápagos Islands.
-    </p>
-
-    <p style="font-size:0.8rem; margin-bottom:1rem; color:#0F6E56;">
-      Ecological Restoration • R • RStudio • GitHub • Field Research
-    </p>
-
-    <a href="assets/pdfs/gv2050-report.pdf"
-       class="project-link"
-       target="_blank">
-
-       View report →
-
-    </a>
-
-  </div>
-
-</div>
-<div class="project-card">
-
-  <div class="project-thumb thumb-2">
-    ⚙️
-  </div>
-
-  <div class="project-body">
-
-    <p class="project-tag">
-      Data Engineering · ETL
-    </p>
-
-    <h3>
-      Data Engineering Pipelines with Airflow, Kafka & Snowflake
-    </h3>
-
-    <p>
-      Designed and implemented end-to-end data acquisition and ETL workflows
-      using Apache Airflow, Kafka, Python, and Snowflake. The project included
-      workflow orchestration, dataset transformation, real-time weather data
-      streaming, warehouse integration, and troubleshooting of production-style
-      data pipeline issues.
-    </p>
-
-    <p style="font-size:0.8rem; margin-bottom:1rem; color:#0F6E56;">
-      Python • Apache Airflow • Apache Kafka • Snowflake • ETL • SQL
-    </p>
-
-    <a href="assets/pdfs/data-engineering-airflow-kafka-snowflake.pdf"
-       class="project-link"
-       target="_blank">
-
-       View report →
-
-    </a>
-
-  </div>
-<div class="project-card">
-
-  <div class="project-thumb">
-    📊
-  </div>
-
-  <div class="project-body">
-
-    <p class="project-tag">
-      Data Analytics · Applied Statistics
-    </p>
-
-    <h3>
-      Chicago Crime Analytics & Spatial Hotspot Analysis
-    </h3>
-
-    <p>
-      Conducted exploratory data analysis on more than 7.6 million crime
-      records from the City of Chicago. The project included data cleaning,
-      feature engineering, statistical analysis, trend detection, arrest-rate
-      evaluation, temporal pattern analysis, and spatial hotspot
-      identification using Python.
-    </p>
-
-    <p style="font-size:0.8rem; margin-bottom:1rem; color:#0F6E56;">
-      Python • Pandas • NumPy • Matplotlib • Seaborn • Statistics • Spatial Analysis
-    </p>
-
-    <a href="assets/pdfs/chicago_crime_HumbertoDiaz.pdf"
-       class="project-link"
-       target="_blank">
-
-       View report →
-
-    </a>
-
-  </div>
-
-</div>
-</div>
-</div>
-    <div class="project-card">
-      <div class="project-thumb thumb-2">🌐</div>
+      <div class="project-thumb"><span>🛰️</span></div>
       <div class="project-body">
-        <p class="project-tag">Consulting · Municipal GIS</p>
-        <h3>RRPD Zoning Bylaw Harmonization</h3>
-        <p>Geospatial and AI-assisted bylaw harmonization across East St. Paul, Dunnottar, St. Clements, and West St. Paul — supporting the Capital Region's planning alignment initiative.</p>
-        <a href="#" class="project-link">View project →</a>
+        <p class="project-tag">Remote Sensing · Environmental Analytics</p>
+        <h3>Monitoring Wetland Vegetation Change in Manitoba Using Satellite Imagery and Python</h3>
+        <span class="status-note">Project under development</span>
+        <p>Developing a remote sensing workflow to monitor wetland vegetation change in Manitoba using satellite imagery and Python. The project focuses on environmental change detection, vegetation analysis, and geospatial data processing to support ecological monitoring and conservation decision-making.</p>
+        <p class="tech-line">Python • Remote Sensing • Satellite Imagery • Geospatial Analysis • Environmental Monitoring</p>
+        <a href="https://github.com/DiazHumberto/wetland-change-manitoba" class="project-link" target="_blank">GitHub repository →</a>
       </div>
     </div>
+
     <div class="project-card">
-      <div class="project-thumb thumb-3">🌱</div>
+      <div class="project-thumb thumb-blue"><span>⚽</span></div>
       <div class="project-body">
-        <p class="project-tag">Remote Sensing · Restoration</p>
-        <h3>Galápagos Verde 2050 Mapping</h3>
-        <p>Produced 12 ArcGIS Pro cartographic products and supported 25+ field surveys for the Charles Darwin Research Station's island-wide ecological restoration program.</p>
-        <a href="#" class="project-link">View project →</a>
+        <p class="project-tag">AI Applications · Software Development</p>
+        <h3>UPRO Soccer — AI Coaching Feedback System</h3>
+        <p>Contributed to an AI-powered coaching feedback platform for youth soccer players. The system transforms drill analytics into standardized performance metrics, trend analysis, personalized coaching insights, and age-appropriate recommendations through a production-style FastAPI service.</p>
+        <p class="tech-line">Python • FastAPI • OpenAI API • JSON • Docker • Pydantic • REST APIs</p>
+        <a href="assets/pdfs/upro-soccer-internship-report.pdf" class="project-link" target="_blank">View report →</a>
+        <a href="https://github.com/DiazHumberto/coach-feedback-api" class="project-link" target="_blank">GitHub repository →</a>
       </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-thumb thumb-green"><span>🌾</span></div>
+      <div class="project-body">
+        <p class="project-tag">Data Science · Sustainable Agriculture</p>
+        <h3>Optimizing Sustainable Farming with AI-Driven Insights</h3>
+        <p>End-to-end data science project following the CRISP-DM framework to optimize sustainable farming practices. The project combines agricultural and market datasets, exploratory data analysis, feature engineering, and data preparation to support future predictive modeling for crop-yield optimization and resource-use reduction.</p>
+        <p class="tech-line">Python • Pandas • NumPy • Matplotlib • Seaborn • CRISP-DM • EDA • Feature Engineering</p>
+        <a href="assets/pdfs/optimizing-sustainable-farming-business.pdf" class="project-link" target="_blank">Business case →</a>
+        <a href="assets/pdfs/optimizing-sustainable-farming-data-understanding.pdf" class="project-link" target="_blank">Data understanding →</a>
+        <a href="assets/pdfs/optimizing-sustainable-farming-data-preparation.pdf" class="project-link" target="_blank">Data preparation →</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-thumb"><span>🌿</span></div>
+      <div class="project-body">
+        <p class="project-tag">Ecological Restoration · Environmental Research</p>
+        <h3>Galápagos Verde 2050 Restoration Research</h3>
+        <p>Contributed to ecological restoration and conservation activities within the Galápagos Verde 2050 program at the Charles Darwin Foundation, supporting endangered species propagation, ecological monitoring, scientific documentation, and biodiversity restoration initiatives across the Galápagos Islands.</p>
+        <p class="tech-line">Ecological Restoration • R • RStudio • GitHub • Field Research</p>
+        <a href="assets/pdfs/gv2050-report.pdf" class="project-link" target="_blank">View report →</a>
+      </div>
+    </div>
+
+  </div>
+
+  <h3 class="project-group-title">Technical & Analytical Projects</h3>
+  <div class="portfolio-grid">
+
+    <div class="project-card">
+      <div class="project-thumb thumb-blue"><span>⚙️</span></div>
+      <div class="project-body">
+        <p class="project-tag">Data Engineering · ETL</p>
+        <h3>Data Engineering Pipelines with Airflow, Kafka & Snowflake</h3>
+        <p>Designed and implemented end-to-end data acquisition and ETL workflows using Apache Airflow, Kafka, Python, and Snowflake. The project included workflow orchestration, dataset transformation, real-time weather data streaming, warehouse integration, and troubleshooting of production-style data pipeline issues.</p>
+        <p class="tech-line">Python • Apache Airflow • Apache Kafka • Snowflake • ETL • SQL</p>
+        <a href="assets/pdfs/data-engineering-airflow-kafka-snowflake.pdf" class="project-link" target="_blank">View report →</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-thumb"><span>📊</span></div>
+      <div class="project-body">
+        <p class="project-tag">Data Analytics · Applied Statistics</p>
+        <h3>Chicago Crime Analytics & Spatial Hotspot Analysis</h3>
+        <p>Conducted exploratory data analysis on more than 7.6 million crime records from the City of Chicago. The project included data cleaning, feature engineering, statistical analysis, trend detection, arrest-rate evaluation, temporal pattern analysis, and spatial hotspot identification using Python.</p>
+        <p class="tech-line">Python • Pandas • NumPy • Matplotlib • Seaborn • Statistics • Spatial Analysis</p>
+        <a href="assets/pdfs/chicago_crime_HumbertoDiaz.pdf" class="project-link" target="_blank">View report →</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-thumb"><span>💧</span></div>
+      <div class="project-body">
+        <p class="project-tag">Environmental Engineering · Simulation</p>
+        <h3>Wastewater Treatment Plant Modeling</h3>
+        <p>Simulation and characterization of domestic wastewater treatment processes using ASM1 methodologies, environmental parameter analysis, and process optimization workflows.</p>
+        <p class="tech-line">WEST • Environmental Modeling • Water Quality • Data Analysis</p>
+        <a href="assets/pdfs/wastewater-modeling.pdf" class="project-link" target="_blank">View report →</a>
+      </div>
+    </div>
+
+  </div>
+
+  <h3 class="project-group-title">GIS & Planning Experience</h3>
+  <div class="portfolio-grid">
+
+    <div class="project-card">
+      <div class="project-thumb thumb-green"><span>🗺️</span></div>
+      <div class="project-body">
+        <p class="project-tag">GIS · Multi-Criteria Analysis</p>
+        <h3>Environmental Suitability & Spatial Decision Modeling</h3>
+        <p>Applied GIS workflows including raster reclassification, proximity analysis, weighted overlays, terrain analysis, and map algebra to evaluate suitability and environmental decision-making scenarios.</p>
+        <p class="tech-line">ArcGIS • QGIS • MCA • Raster Analysis • DEMs • Map Algebra</p>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-thumb thumb-sand"><span>🌐</span></div>
+      <div class="project-body">
+        <p class="project-tag">Municipal GIS · Planning Support</p>
+        <h3>RRPD Zoning Bylaw Harmonization Support</h3>
+        <p>Supported municipal zoning bylaw harmonization by building a source-traceable comparison matrix across five bylaws, performing consistency checks, and improving structured QA workflows for cross-bylaw analysis.</p>
+        <p class="tech-line">GIS • Policy QA • Structured Comparison • Municipal Planning • Documentation</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- GIS CAPABILITIES -->
+<section id="gis">
+  <p class="section-label">GIS & Spatial Analytics</p>
+  <h2 class="section-title">Geospatial methods and technical capabilities.</h2>
+  <p class="section-intro">This section summarizes GIS knowledge and project-based experience that may not have a public report or repository yet, but is central to my environmental and spatial analysis background.</p>
+
+  <div class="capability-grid">
+    <div class="capability-card">
+      <h3>Spatial Analysis</h3>
+      <ul>
+        <li>Land-use analysis</li>
+        <li>Noise mapping</li>
+        <li>Wildlife corridor identification</li>
+        <li>Environmental monitoring support</li>
+        <li>Location-based queries</li>
+      </ul>
+    </div>
+
+    <div class="capability-card">
+      <h3>Terrain & Hydrologic Modeling</h3>
+      <ul>
+        <li>DEM processing</li>
+        <li>Slope, aspect, and hillshade maps</li>
+        <li>Watershed delineation</li>
+        <li>Viewshed analysis</li>
+        <li>Hydrologic parameter extraction</li>
+      </ul>
+    </div>
+
+    <div class="capability-card">
+      <h3>Raster & Suitability Modeling</h3>
+      <ul>
+        <li>Multi-Criteria Analysis (MCA)</li>
+        <li>Weighted overlay analysis</li>
+        <li>Raster reclassification</li>
+        <li>Euclidean distance analysis</li>
+        <li>Raster calculator and map algebra</li>
+      </ul>
+    </div>
+
+    <div class="capability-card">
+      <h3>Geoprocessing & Data Management</h3>
+      <ul>
+        <li>Clip, intersect, buffer, dissolve, erase, merge</li>
+        <li>Joins and relates</li>
+        <li>GPS data integration</li>
+        <li>Attribute calculations</li>
+        <li>SQL and Excel-based QA/QC</li>
+      </ul>
+    </div>
+
+    <div class="capability-card">
+      <h3>Cartography</h3>
+      <ul>
+        <li>Publication-ready map layouts</li>
+        <li>Symbology and labeling</li>
+        <li>Scale bars, legends, and map elements</li>
+        <li>Technical reporting visuals</li>
+        <li>Multi-layer GIS deliverables</li>
+      </ul>
+    </div>
+
+    <div class="capability-card">
+      <h3>Tools</h3>
+      <ul>
+        <li>ArcGIS Pro and ArcMap</li>
+        <li>QGIS</li>
+        <li>Python and SQL</li>
+        <li>Excel and structured QA workflows</li>
+        <li>Remote sensing workflows</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -780,38 +811,52 @@
   <p class="section-label">Experience</p>
   <h2 class="section-title">Where I've worked.</h2>
   <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-year">2026</div>
+      <div class="timeline-content">
+        <h3>AI / Data Intern — UPRO Soccer</h3>
+        <p class="org">UPRO Soccer · Remote / Project-Based</p>
+        <p>Supported data labeling workflows for soccer drill videos and contributed to AI text feedback system design, including rubric-based metrics, trend-aware feedback, and FastAPI-based coaching response workflows.</p>
+      </div>
+    </div>
+
     <div class="timeline-item">
       <div class="timeline-year">2021 – Present</div>
       <div class="timeline-content">
-        <h3>Freelance Geospatial & AI Consultant</h3>
-        <p class="org">Independent · Canada</p>
-        <p>GIS analysis, spatial modelling, and AI-assisted workflows for municipal, environmental, and private sector clients across Canada and Latin America.</p>
+        <h3>Independent Geospatial & Environmental Data Projects</h3>
+        <p class="org">Winnipeg, MB & Ecuador</p>
+        <p>Delivered project-based GIS, spatial analysis, and data workflows for environmental and community-focused work using QGIS, ArcGIS Pro, ArcMap, Python, SQL, and structured reporting methods.</p>
       </div>
     </div>
+
     <div class="timeline-item">
       <div class="timeline-year">Jun 2024 – Feb 2025</div>
       <div class="timeline-content">
         <h3>Wildlife Ambassador (Volunteer)</h3>
         <p class="org">Assiniboine Park Conservancy · Winnipeg, MB</p>
-        <p>Assisted in delivering environmental education programming and wildlife interpretation for park visitors of all ages.</p>
+        <p>Assisted in environmental education programming and wildlife interpretation for park visitors, strengthening public communication around conservation and ecological topics.</p>
       </div>
     </div>
+
     <div class="timeline-item">
       <div class="timeline-year">2022 – 2023</div>
       <div class="timeline-content">
         <h3>Technical / Research Assistant — GIS</h3>
         <p class="org">Charles Darwin Research Station (CDRS) · Galápagos, Ecuador</p>
-        <p>Supported the Galápagos Verde 2050 restoration program through spatial data management, 25+ field surveys, and production of 12 ArcGIS Pro map products. Classified 4,540 seeds across 16 native species.</p>
+        <p>Supported the Galápagos Verde 2050 restoration program through spatial data management, field surveys, technical documentation, ecological monitoring, and restoration research support.</p>
       </div>
     </div>
+
     <div class="timeline-item">
       <div class="timeline-year">2021 – 2022</div>
       <div class="timeline-content">
         <h3>Environmental Intern</h3>
         <p class="org">Ministry of Environment · Ecuador</p>
-        <p>Water resource planning for 300+ hectares across six Irrigation Water Boards, integrating spatial analysis with regulatory compliance frameworks.</p>
+        <p>Supported water resource planning and environmental analysis across irrigation systems, integrating spatial information, field context, and regulatory documentation.</p>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -823,7 +868,7 @@
   <h2 class="section-title">Let's work together.</h2>
   <div class="contact-wrap">
     <div class="contact-text">
-      <p>I'm actively seeking roles in GIS, environmental data science, and ecological fields across Canada — and open to consulting engagements. Whether you have a project in mind or just want to connect, I'd love to hear from you.</p>
+      <p>I'm actively seeking roles in GIS, environmental data science, AI applications, and ecological/environmental analytics across Canada. I am especially interested in work involving remote sensing, environmental monitoring, geospatial data, and applied machine learning.</p>
       <div class="contact-links">
         <a href="mailto:heleazardm@gmail.com" class="contact-link">
           <span>✉️</span> heleazardm@gmail.com
@@ -838,14 +883,14 @@
           <span>📞</span> +1 (431) 990-4247
         </a>
         <a class="contact-link">
-          <span>📍</span> Winnipeg, MB · Open to relocation across Canada
+          <span>📍</span> Winnipeg, MB · Open to opportunities across Canada
         </a>
       </div>
     </div>
     <div class="contact-card">
       <div class="contact-initials">HD</div>
       <h3>Humberto Díaz</h3>
-      <p class="title">Environmental Engineer & GIS Specialist</p>
+      <p class="title">Environmental Engineer · AI & GIS Data Analyst</p>
       <a href="mailto:heleazardm@gmail.com" class="btn-primary" style="display:inline-block;">Send me an email</a>
       <p class="location">📍 Winnipeg, Manitoba, Canada<br>🌐 Bilingual — English & Spanish</p>
     </div>
