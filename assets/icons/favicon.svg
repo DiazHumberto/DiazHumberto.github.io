@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="16" fill="#085041"/>
+  <circle cx="46" cy="18" r="6" fill="#9FE1CB" opacity="0.95"/>
+  <path d="M18 44 C18 29 28 20 44 18 C40 35 31 44 18 44 Z" fill="#1D9E75"/>
+  <path d="M21 42 C27 34 34 27 43 20" stroke="#E1F5EE" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <text x="32" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#E1F5EE">HD</text>
+</svg>
