@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wetland Change in Manitoba — Humberto Díaz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #1D9E75;
+      --green-dark: #085041;
+      --green-light: #E1F5EE;
+      --green-mid: #5DCAA5;
+      --teal: #0F6E56;
+      --text: #1a1a1a;
+      --text-muted: #5a6a60;
+      --bg: #f8faf8;
+      --white: #ffffff;
+      --border: #d0e6d8;
+      --accent: #9FE1CB;
+      --sand: #F4EEDC;
+      --blue: #E6F1FB;
+      --danger-soft: #FDE9E4;
+      --danger: #B7533C;
+      --shadow: 0 18px 60px rgba(8, 80, 65, 0.10);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: radial-gradient(circle at top left, rgba(159,225,203,0.24), transparent 34%), var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    a { color: inherit; }
+
+    .page-shell { max-width: 1180px; margin: 0 auto; padding: 0 3rem; }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(248,250,248,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 1rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      text-decoration: none;
+      color: var(--green-dark);
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      list-style: none;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--green); }
+
+    .hero {
+      min-height: 86vh;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3rem;
+      align-items: center;
+      padding: 5.5rem 0 4rem;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green);
+      background: var(--green-light);
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 0.34rem 0.9rem;
+      margin-bottom: 1.35rem;
+    }
+
+    h1, h2, h3 {
+      color: var(--green-dark);
+      line-height: 1.12;
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3rem, 5vw, 5rem);
+      letter-spacing: -0.045em;
+      margin-bottom: 1.2rem;
+    }
+
+    h1 em { color: var(--green); font-style: italic; }
+
+    .hero-sub {
+      max-width: 630px;
+      color: var(--text-muted);
+      font-weight: 300;
+      font-size: 1.08rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-actions { display: flex; gap: 0.85rem; flex-wrap: wrap; }
+
+    .btn-primary, .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.82rem 1.25rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: transform 0.15s, background 0.2s, border-color 0.2s, color 0.2s;
+    }
+
+    .btn-primary { background: var(--green); color: white; }
+    .btn-primary:hover { background: var(--teal); transform: translateY(-1px); }
+    .btn-secondary { border: 1.5px solid var(--border); color: var(--text-muted); background: rgba(255,255,255,0.55); }
+    .btn-secondary:hover { border-color: var(--green); color: var(--green); transform: translateY(-1px); }
+
+    .hero-panel {
+      background: rgba(255,255,255,0.86);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 1.2rem;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-panel::before {
+      content: '';
+      position: absolute;
+      inset: -80px auto auto -80px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(29,158,117,0.20), transparent 68%);
+      pointer-events: none;
+    }
+
+
+    .context-hero-image {
+      margin: 0 0 1rem;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--white);
+      box-shadow: 0 12px 30px rgba(8, 80, 65, 0.12);
+    }
+
+    .context-hero-image img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+    }
+
+    .context-hero-image figcaption {
+      padding: 0.85rem 1rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .map-card {
+      position: relative;
+      border-radius: 22px;
+      min-height: 300px;
+      padding: 1.2rem;
+      background:
+        linear-gradient(135deg, rgba(8,80,65,0.1), rgba(159,225,203,0.3)),
+        linear-gradient(90deg, rgba(255,255,255,0.45) 1px, transparent 1px),
+        linear-gradient(rgba(255,255,255,0.45) 1px, transparent 1px),
+        linear-gradient(135deg, #EAF6E6 0%, #A9DFC7 52%, #73BE9E 100%);
+      background-size: auto, 30px 30px, 30px 30px, auto;
+      overflow: hidden;
+    }
+
+    .map-blob {
+      position: absolute;
+      border-radius: 44% 56% 54% 46% / 53% 40% 60% 47%;
+      background: rgba(8,80,65,0.18);
+      border: 1px solid rgba(255,255,255,0.55);
+      filter: blur(0.1px);
+    }
+
+    .map-blob.one { width: 180px; height: 130px; top: 72px; left: 82px; transform: rotate(-16deg); }
+    .map-blob.two { width: 120px; height: 90px; right: 62px; bottom: 62px; transform: rotate(25deg); background: rgba(29,158,117,0.22); }
+    .map-blob.three { width: 70px; height: 54px; left: 60px; bottom: 54px; background: rgba(255,255,255,0.40); }
+
+    .map-label {
+      position: absolute;
+      left: 1.1rem;
+      bottom: 1.1rem;
+      max-width: 250px;
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(208,230,216,0.8);
+      border-radius: 16px;
+      padding: 0.85rem 0.95rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .map-label strong { display: block; color: var(--green-dark); font-size: 0.95rem; }
+    .map-label span { display: block; color: var(--text-muted); font-size: 0.78rem; line-height: 1.45; }
+
+    .mini-chart {
+      margin-top: 1rem;
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .mini-chart h3 { font-size: 0.95rem; margin-bottom: 0.1rem; }
+    .chart-row { display: grid; grid-template-columns: 70px 1fr 58px; gap: 0.7rem; align-items: center; font-size: 0.8rem; color: var(--text-muted); }
+    .bar-track { height: 10px; background: var(--green-light); border-radius: 999px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--green-mid), var(--green-dark)); }
+    .bar-fill.alt { background: linear-gradient(90deg, #DCCB9A, var(--danger)); }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+      margin: 0 0 4rem;
+    }
+
+    .stat-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.25rem;
+      box-shadow: 0 8px 30px rgba(8,80,65,0.04);
+    }
+
+    .stat-card strong {
+      display: block;
+      font-family: 'DM Serif Display', serif;
+      color: var(--green-dark);
+      font-size: 1.9rem;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-card span { color: var(--text-muted); font-size: 0.82rem; line-height: 1.45; display: block; }
+
+    section { padding: 4.8rem 0; border-top: 1px solid var(--border); }
+
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--green);
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.1rem, 4vw, 3.2rem);
+      letter-spacing: -0.035em;
+      margin-bottom: 1rem;
+    }
+
+    .section-intro {
+      max-width: 780px;
+      color: var(--text-muted);
+      font-weight: 300;
+      font-size: 1.02rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .content-card, .callout, .figure-card, .workflow-card, .insight-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 1.4rem;
+      box-shadow: 0 8px 30px rgba(8,80,65,0.04);
+    }
+
+    .content-card h3, .workflow-card h3, .insight-card h3 { font-size: 1rem; margin-bottom: 0.65rem; }
+    .content-card p, .workflow-card p, .insight-card p { color: var(--text-muted); font-weight: 300; font-size: 0.92rem; }
+
+    .callout {
+      border-color: var(--accent);
+      background: linear-gradient(135deg, rgba(225,245,238,0.9), rgba(255,255,255,0.9));
+    }
+
+    .callout strong { color: var(--green-dark); }
+    .callout p { color: var(--text-muted); font-weight: 300; }
+
+    .workflow {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.75rem;
+      margin-top: 2rem;
+      position: relative;
+    }
+
+    .workflow-card {
+      min-height: 176px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .workflow-card::before {
+      content: attr(data-step);
+      display: inline-flex;
+      width: 34px;
+      height: 34px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--green-light);
+      color: var(--green-dark);
+      border: 1px solid var(--accent);
+      font-weight: 600;
+      font-size: 0.85rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .workflow-card h3 { font-size: 0.9rem; }
+    .workflow-card p { font-size: 0.82rem; line-height: 1.5; }
+
+    .figure-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .figure-card { padding: 0; overflow: hidden; }
+    .figure-card img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; background: var(--green-light); }
+
+    .figure-fallback {
+      display: none;
+      aspect-ratio: 16 / 10;
+      padding: 1.2rem;
+      background:
+        linear-gradient(135deg, rgba(225,245,238,0.95), rgba(255,255,255,0.9)),
+        linear-gradient(90deg, rgba(8,80,65,0.07) 1px, transparent 1px),
+        linear-gradient(rgba(8,80,65,0.07) 1px, transparent 1px);
+      background-size: auto, 24px 24px, 24px 24px;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    .figure-body { padding: 1.1rem 1.25rem 1.25rem; }
+    .figure-body h3 { font-size: 0.95rem; margin-bottom: 0.35rem; }
+    .figure-body p { color: var(--text-muted); font-size: 0.84rem; font-weight: 300; line-height: 1.55; }
+
+    .chart-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.3rem;
+      margin-top: 1.7rem;
+    }
+
+    .donut-wrap {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 1.2rem;
+      align-items: center;
+    }
+
+    .donut {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: conic-gradient(var(--danger) 0 25.11%, var(--green-mid) 25.11% 82.41%, var(--green-dark) 82.41% 100%);
+      position: relative;
+      box-shadow: inset 0 0 0 1px rgba(8,80,65,0.10);
+    }
+
+    .donut::after {
+      content: '';
+      position: absolute;
+      inset: 36px;
+      border-radius: 50%;
+      background: white;
+      border: 1px solid var(--border);
+    }
+
+    .legend { display: grid; gap: 0.6rem; }
+    .legend-item { display: grid; grid-template-columns: 12px 1fr auto; gap: 0.55rem; align-items: center; font-size: 0.86rem; color: var(--text-muted); }
+    .swatch { width: 12px; height: 12px; border-radius: 3px; background: var(--green-mid); }
+    .swatch.decrease { background: var(--danger); }
+    .swatch.increase { background: var(--green-dark); }
+
+    .comparison-bars { display: grid; gap: 0.85rem; }
+    .comparison-row { display: grid; grid-template-columns: 120px 1fr 56px; gap: 0.8rem; align-items: center; color: var(--text-muted); font-size: 0.86rem; }
+    .comparison-track { height: 12px; border-radius: 999px; background: var(--green-light); overflow: hidden; }
+    .comparison-fill { height: 100%; border-radius: 999px; background: var(--green); }
+
+    .insight-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.1rem;
+      margin-top: 1.5rem;
+    }
+
+    .insight-card.warning { background: linear-gradient(135deg, var(--danger-soft), #fff); border-color: #F1C8BB; }
+    .insight-card.success { background: linear-gradient(135deg, var(--green-light), #fff); border-color: var(--accent); }
+
+    .tag-list { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-top: 1rem; }
+    .tag { display: inline-flex; border: 1px solid var(--accent); background: var(--green-light); color: var(--green-dark); border-radius: 999px; padding: 0.28rem 0.72rem; font-size: 0.78rem; }
+
+    .footer-nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .footer-link {
+      display: block;
+      padding: 1.3rem;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.2s;
+    }
+
+    .footer-link:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(8,80,65,0.08); }
+    .footer-link span { display: block; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); font-weight: 600; margin-bottom: 0.25rem; }
+    .footer-link strong { color: var(--green-dark); }
+
+    footer {
+      text-align: center;
+      padding: 2rem 3rem;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 980px) {
+      .hero, .two-col, .chart-grid, .footer-nav { grid-template-columns: 1fr; }
+      .workflow { grid-template-columns: repeat(2, 1fr); }
+      .stat-grid { grid-template-columns: repeat(2, 1fr); }
+      .figure-grid { grid-template-columns: 1fr; }
+      .insight-grid { grid-template-columns: 1fr; }
+      .donut-wrap { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .page-shell, .nav-inner { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .hero { padding-top: 3.5rem; }
+      .stat-grid, .workflow { grid-template-columns: 1fr; }
+      .nav-inner { align-items: flex-start; flex-direction: column; }
+      h1 { font-size: 3rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">H. Díaz</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#portfolio">Portfolio</a></li>
+        <li><a href="#workflow">Workflow</a></li>
+        <li><a href="#visuals">Visuals</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="https://github.com/DiazHumberto/wetland-change-manitoba" target="_blank">GitHub</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="page-shell">
+    <header class="hero">
+      <div>
+        <span class="eyebrow">🛰️ Remote sensing · Wetland monitoring</span>
+        <h1>Tracking <em>wetland vegetation change</em> with Sentinel-2 and Python.</h1>
+        <p class="hero-sub">
+          A portfolio project focused on Oak Hammock Marsh, Manitoba. The workflow compares August 2020 and August 2025 Sentinel-2 imagery to measure NDVI change, investigate water-related spectral signals, and screen image-quality issues before environmental interpretation.
+        </p>
+        <div class="hero-actions">
+          <a href="#visuals" class="btn-primary">View maps and plots</a>
+          <a href="https://github.com/DiazHumberto/wetland-change-manitoba" class="btn-secondary" target="_blank">GitHub repository</a>
+        </div>
+      </div>
+
+      <aside class="hero-panel" aria-label="Project visual overview">
+        <figure class="context-hero-image">
+          <img src="../assets/images/wetland/context/ohm1.jpg" alt="Oak Hammock Marsh wetland landscape">
+          <figcaption>Study-area context image for Oak Hammock Marsh, Manitoba. The analytical results below come from the project-generated Sentinel-2 outputs.</figcaption>
+        </figure>
+        <div class="mini-chart">
+          <h3>Mean NDVI comparison</h3>
+          <div class="chart-row"><span>2020</span><div class="bar-track"><div class="bar-fill" style="width:60.29%"></div></div><span>0.6029</span></div>
+          <div class="chart-row"><span>2025</span><div class="bar-track"><div class="bar-fill alt" style="width:57.89%"></div></div><span>0.5789</span></div>
+        </div>
+      </aside>
+    </header>
+
+    <div class="stat-grid" aria-label="Project highlights">
+      <div class="stat-card"><strong>3,579.95 ha</strong><span>Raster-represented WMA analysis area</span></div>
+      <div class="stat-card"><strong>357,995</strong><span>10 m Sentinel-2 pixels inside the WMA</span></div>
+      <div class="stat-card"><strong>67.62%</strong><span>Common strict-clear NDVI coverage after quality screening</span></div>
+      <div class="stat-card"><strong>D2</strong><span>Strongest credible large decrease cluster retained for investigation</span></div>
+    </div>
+
+    <section id="overview">
+      <p class="section-label">Project overview</p>
+      <h2 class="section-title">From a broad proof of concept to a refined WMA analysis.</h2>
+      <div class="two-col">
+        <div class="content-card">
+          <h3>What the project does</h3>
+          <p>
+            The project uses Sentinel-2 Level-2A imagery, GIS, and Python to examine satellite-observed vegetation greenness and water-related spectral conditions in and around Oak Hammock Marsh. It compares August 8, 2020 with August 2, 2025 using NDVI, NDWI, MNDWI, and Sentinel-2 Scene Classification Layer quality information.
+          </p>
+          <div class="tag-list">
+            <span class="tag">Sentinel-2</span><span class="tag">NDVI</span><span class="tag">NDWI</span><span class="tag">MNDWI</span><span class="tag">SCL quality screening</span><span class="tag">Rasterio</span><span class="tag">GeoPandas</span>
+          </div>
+        </div>
+        <div class="callout">
+          <h3>Important interpretation rule</h3>
+          <p>
+            The project identifies spectral change. It does <strong>not</strong> automatically label NDVI decline as ecological degradation or NDVI increase as ecological improvement. Water levels, vegetation type, phenology, image quality, and management conditions may all influence the observed signal.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflow">
+      <p class="section-label">Graphical workflow</p>
+      <h2 class="section-title">A reproducible remote-sensing pipeline.</h2>
+      <p class="section-intro">
+        The page version below turns the technical workflow into a visual sequence: acquire Sentinel-2 scenes, validate grids, calculate indices, classify change, test spatial clusters, and then screen results using water indices and Scene Classification Layer quality information.
+      </p>
+      <div class="workflow">
+        <article class="workflow-card" data-step="1">
+          <h3>Acquire scenes</h3>
+          <p>Use Sentinel-2 Level-2A imagery from similar growing-season dates in 2020 and 2025.</p>
+        </article>
+        <article class="workflow-card" data-step="2">
+          <h3>Validate grids</h3>
+          <p>Confirm CRS, resolution, transform, shape, and native 10 m / 20 m grid alignment.</p>
+        </article>
+        <article class="workflow-card" data-step="3">
+          <h3>Calculate indices</h3>
+          <p>Generate NDVI, NDWI, and MNDWI using calibrated surface reflectance values.</p>
+        </article>
+        <article class="workflow-card" data-step="4">
+          <h3>Map change</h3>
+          <p>Classify NDVI change, summarize pixels and hectares, and identify extreme connected clusters.</p>
+        </article>
+        <article class="workflow-card" data-step="5">
+          <h3>Screen quality</h3>
+          <p>Use SCL and water-index diagnostics to separate credible features from uncertain comparisons.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="visuals">
+      <p class="section-label">Maps and plots</p>
+      <h2 class="section-title">Visual outputs that tell the project story.</h2>
+      <p class="section-intro">
+        Copy the selected PNG outputs from the project repository into <code>assets/images/wetland/figures/</code>. The cards below will automatically display them once the files are in place.
+      </p>
+      <div class="figure-grid">
+        <article class="figure-card">
+          <img src="../assets/images/wetland/figures/oak_hammock_wma_ndvi_change_classes_2020_2025.png" alt="Classified NDVI change within Oak Hammock Marsh WMA" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="figure-fallback">Missing image: oak_hammock_wma_ndvi_change_classes_2020_2025.png</div>
+          <div class="figure-body">
+            <h3>Classified WMA NDVI change</h3>
+            <p>Three-class map showing decrease, relative stability, and increase inside the official WMA boundary.</p>
+          </div>
+        </article>
+        <article class="figure-card">
+          <img src="../assets/images/wetland/figures/oak_hammock_wma_ndvi_change_continuous_2020_2025.png" alt="Continuous NDVI change within Oak Hammock Marsh WMA" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="figure-fallback">Missing image: oak_hammock_wma_ndvi_change_continuous_2020_2025.png</div>
+          <div class="figure-body">
+            <h3>Continuous NDVI change</h3>
+            <p>Pixel-level magnitude and direction of NDVI change, preserving more detail than the classified map.</p>
+          </div>
+        </article>
+        <article class="figure-card">
+          <img src="../assets/images/wetland/figures/oak_hammock_wma_ranked_extreme_change_clusters_2020_2025.png" alt="Ranked extreme NDVI-change clusters" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="figure-fallback">Missing image: oak_hammock_wma_ranked_extreme_change_clusters_2020_2025.png</div>
+          <div class="figure-body">
+            <h3>Ranked extreme-change clusters</h3>
+            <p>Connected patches from the strongest NDVI decrease and increase tails, ranked for follow-up investigation.</p>
+          </div>
+        </article>
+        <article class="figure-card">
+          <img src="../assets/images/wetland/figures/oak_hammock_wma_d1_d2_clusters_over_2020_scl.png" alt="D1 and D2 decrease clusters over the 2020 Scene Classification Layer" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="figure-fallback">Missing image: oak_hammock_wma_d1_d2_clusters_over_2020_scl.png</div>
+          <div class="figure-body">
+            <h3>D1 and D2 quality-control view</h3>
+            <p>Shows why the largest original decrease cluster was not a valid clear-to-clear comparison, while D2 remained credible.</p>
+          </div>
+        </article>
+        <article class="figure-card">
+          <img src="../assets/images/wetland/figures/oak_hammock_wma_ndvi_change_quality_screened_2020_2025.png" alt="Quality-screened continuous NDVI change" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="figure-fallback">Missing image: oak_hammock_wma_ndvi_change_quality_screened_2020_2025.png</div>
+          <div class="figure-body">
+            <h3>Quality-screened continuous NDVI</h3>
+            <p>Continuous NDVI change after retaining only common clear observations from both dates.</p>
+          </div>
+        </article>
+        <article class="figure-card">
+          <img src="../assets/images/wetland/figures/oak_hammock_wma_ndvi_change_classes_quality_screened_2020_2025.png" alt="Quality-screened classified NDVI change" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="figure-fallback">Missing image: oak_hammock_wma_ndvi_change_classes_quality_screened_2020_2025.png</div>
+          <div class="figure-body">
+            <h3>Quality-screened classified NDVI</h3>
+            <p>Class proportions after masking questionable observations and limiting interpretation to common-clear pixels.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="results">
+      <p class="section-label">Results</p>
+      <h2 class="section-title">The refined WMA result was mostly stable, with a small negative NDVI shift.</h2>
+      <p class="section-intro">
+        The initial WMA analysis used 357,995 10 m pixels. Mean NDVI changed from 0.6029 in 2020 to 0.5789 in 2025. After strict quality screening, 242,069 pixels remained available for common-clear NDVI comparison.
+      </p>
+      <div class="chart-grid">
+        <article class="content-card">
+          <h3>Quality-screened class shares</h3>
+          <div class="donut-wrap">
+            <div class="donut" aria-label="Donut chart of quality-screened NDVI classes"></div>
+            <div class="legend">
+              <div class="legend-item"><span class="swatch decrease"></span><span>NDVI decrease</span><strong>25.11%</strong></div>
+              <div class="legend-item"><span class="swatch"></span><span>Relatively stable</span><strong>57.30%</strong></div>
+              <div class="legend-item"><span class="swatch increase"></span><span>NDVI increase</span><strong>17.58%</strong></div>
+            </div>
+          </div>
+        </article>
+        <article class="content-card">
+          <h3>Original vs. quality-screened shares</h3>
+          <div class="comparison-bars">
+            <div class="comparison-row"><span>Decrease</span><div class="comparison-track"><div class="comparison-fill" style="width:25.11%; background:var(--danger);"></div></div><strong>+0.69 pp</strong></div>
+            <div class="comparison-row"><span>Stable</span><div class="comparison-track"><div class="comparison-fill" style="width:57.30%; background:var(--green-mid);"></div></div><strong>-0.61 pp</strong></div>
+            <div class="comparison-row"><span>Increase</span><div class="comparison-track"><div class="comparison-fill" style="width:17.58%; background:var(--green-dark);"></div></div><strong>-0.09 pp</strong></div>
+          </div>
+          <p style="margin-top:1rem;color:var(--text-muted);font-size:0.86rem;font-weight:300;">Class shares changed by less than one percentage point after quality screening, but cluster-level interpretation changed substantially.</p>
+        </article>
+      </div>
+
+      <div class="insight-grid">
+        <article class="insight-card">
+          <h3>Overall WMA signal</h3>
+          <p>The original WMA mean NDVI change was -0.0240, and the quality-screened mean remained negative at -0.0207.</p>
+        </article>
+        <article class="insight-card warning">
+          <h3>D1 was rejected</h3>
+          <p>The largest original decrease cluster had 0% common-clear coverage and cannot be interpreted as confirmed vegetation decline.</p>
+        </article>
+        <article class="insight-card success">
+          <h3>D2 stayed credible</h3>
+          <p>D2 had 100% common-clear coverage and is currently the strongest credible large decrease feature for follow-up investigation.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="limitations">
+      <p class="section-label">Limitations and next steps</p>
+      <h2 class="section-title">Careful interpretation is part of the project.</h2>
+      <div class="two-col">
+        <div class="content-card">
+          <h3>Current limitations</h3>
+          <p>
+            The analysis compares only two dates. Similar calendar timing does not guarantee identical phenology, water levels, soil moisture, management conditions, or atmospheric effects. NDVI, NDWI, and MNDWI are spectral indicators, not direct measurements of wetland health.
+          </p>
+        </div>
+        <div class="content-card">
+          <h3>Next phase</h3>
+          <p>
+            The next step is to separate open water, wetland vegetation, and other surface types before interpreting change. Future versions can add more dates, field validation, land-cover classification, and an interactive dashboard.
+          </p>
+        </div>
+      </div>
+      <div class="footer-nav">
+        <a class="footer-link" href="../index.html#portfolio"><span>Back</span><strong>Return to portfolio homepage →</strong></a>
+        <a class="footer-link" href="manitoba-wildfire-risk.html"><span>Related project</span><strong>Explore Manitoba Wildfire Risk Intelligence →</strong></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Humberto Díaz · Wetland change monitoring project page.
+  </footer>
+</body>
+</html>
